@@ -1,69 +1,89 @@
 # JavaSsript Vectors: Lab 829#
 
 ###Objectives###
- - Create a vector object with properties and methods a Vector class
- - Understand Vector magnitude and direction 
- - Understand Vector addition, subtraction
+ - Create a vector object with properties and methods
+ - Understand vector magnitude and direction 
  - Create getters and setters for magnitude and direction 
+ - Understand vector addition, subtraction
+ - Review a little Trig
+ 
 
 
 ##Part I: Add a Vector constructor function to your lab ##
- - Get the Student_Labs repo from GitHub and 
- - Add an object factory function according to the pattern below
+
+ - Get the Student_AdvancedAnimation repo from GitHub 
+ - Create a folder for lab829vectors
 
 
-###Part II: Four JS Patterns for creating objects###
+##Part II: Understand Vectors##
 
- -  Add the following code to your project (Do **NOT** copy and paste):
+ -  Vectors have **two** values: **Magnitude and Direction**
  
 
-			//  JavaScript object patterns
-			//  One:Ball Factory:: Build and return a Ball
-			function ballFactory(rad){
-			  var Ball = {
-			    radius:rad,
-			    getDiameter:function(){
-			      return 2*rad;
-			    }
-			  }
-			  return Ball;
-			}
-
-			// Two:Constructor function:: Simplifies the code above
-			function Ball(rad){
-			  this.radius = rad;
-			   this.getDiameter = function(){
-			     return this.rad*2;
-			   }
-			}
-			
-			//  Three:Add a method to the prototype
-			Ball.prototype.getArea = function () {
-			  return this.radius*this.radius*Math.PI;
-			};
-			
-			// Four:Classical syntax::Hand holding for Java programmers 
-			// Where does the function "getDiameter()" end up?   
-			class ClassyBall{
-			   constructor(rad){
-			     this.rad = rad;
-			   }
-
-			   getDiameter(){
-			     return this.rad*2;
-			   }
-			
-			}
+ ![image](vectors.png)
 
 
- -  Use the console to see where the methods are added to your object:
+ -  Think of the **magnitude** of a vector as the **length of the hypotenuse** of a right triangle.  
+ If the x and y properties of your vector object represent the sides of the triangle, what is the magnitude in terms of x and y? </br>
+
+
+ -  Think of the **direction** of a vector as the **angle** formed by the hypotenuse and one side of the triangle  
+If the x and y properties of your vector object represent the sides of the triangle, what is the direction in terms of x and y? </br>
  
-###Part III: Canvas Code###
+##Part III: Create Getters and Setters for the Vector Magnitude and Direction ##
 
- -  Study the code that creates a canvas and a context.  Use the patterns above to create four balls and animate each:
+ -  Given a vector object, we want to get and set both the magnitude and dorection of the vector.  For instance, consider the following code:
+
+		var v1 = new JSVector(100, 200);
+
+		v1.getMagnitude();
+		v1.setMagnitude();
+		v1.getDirection();
+		v1.setDirection();
+
+ - The signatures for these methods are in the lab for lab folder for this project (as shown below).  
+ 
+        // Set the magnitude of the vector,
+		// retaining the angle (direction).
+		JSVector.prototype.setMagnitude = function(mag){
+		  
+		}
+		
+		// Get the magnitude of the vector using pythagorean theorem
+		JSVector.prototype.getMagnitude = function(){
+		 
+		}
+		
+		// Set the angle (direction) of the vector,
+		// retaining the magnitude.
+		JSVector.prototype.setDirection = function(angle){
+		 
+		}
+		
+		// Get the direction (angle) of the vector
+		JSVector.prototype.getDirection = function(){
+		  
+		}
+
+ - **Work with your partner and discuss the following**.  What do getter methods return?  How do we set values? How can we calculate these values?
 
 
+##Part IV: Vector Addition and subtraction ##
 
+ - The Sum of two vectors is the sum of their x and y properties:
+
+![image](vec2.png)
+
+ - We could simple add the properties directly:  The code below will take the x and y values from one vector and add it to another
+
+			v1.x = v1.x + v2.x;
+			v1.y = v1.y + v2.y;
+
+ - Or we can write a method to accomplish this:
+
+			v1.add(v2);
+
+ - Write the code for the **add()** and **sub()** methods in the **JSVector()**class
 
 
 ----
